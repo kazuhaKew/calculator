@@ -3,9 +3,9 @@
  * Supports: English (en), Russian (ru), and Uzbek (uz)
  */
 
-// Language dictionaries
 const translations = {
     en: {
+        // Main interface
         title: "Age Calculator",
         subtitle: "Discover your age in amazing detail",
         birthDateLabel: "Enter your birth date:",
@@ -20,22 +20,55 @@ const translations = {
         printBtn: "Print",
         resetBtn: "Calculate Again",
         footer: "© 2025 Enhanced Age Calculator. Made with ❤️",
-        // Add more translations for dynamic content in calculator.js
+        
+        // Time units
         years: "years",
         months: "months",
         days: "days",
         hours: "hours",
         minutes: "minutes",
         seconds: "seconds",
-        daysUntilBirthday: "days until your next birthday",
-        zodiacSign: "Your zodiac sign is",
-        dayOfWeek: "You were born on a",
-        ageInDays: "You've lived for",
-        totalDays: "days",
-        sleepTime: "You've probably slept for about",
-        heartbeats: "Your heart has beaten approximately"
+        
+        // Dynamic content
+        ageDisplay: "{years} years, {months} months, {days} days",
+        totalDays: "Total days lived: {days}",
+        totalHours: "Total hours: {hours}",
+        totalMinutes: "Total minutes: {minutes}",
+        totalSeconds: "Total seconds: {seconds}",
+        daysUntilBirthday: "{days} days until your next birthday",
+        nextBirthdayDate: "Next birthday: {date}",
+        zodiacSign: "Zodiac sign: {sign}",
+        dayOfWeek: "Born on: {day}",
+        sleepTime: "Approximate sleep time: {years} years, {days} days",
+        heartbeats: "Estimated heartbeats: {beats}",
+        breathsTaken: "Approximate breaths: {breaths}",
+        
+        // Zodiac signs
+        aries: "Aries",
+        taurus: "Taurus",
+        gemini: "Gemini",
+        cancer: "Cancer",
+        leo: "Leo",
+        virgo: "Virgo",
+        libra: "Libra",
+        scorpio: "Scorpio",
+        sagittarius: "Sagittarius",
+        capricorn: "Capricorn",
+        aquarius: "Aquarius",
+        pisces: "Pisces",
+        
+        // Days of week
+        monday: "Monday",
+        tuesday: "Tuesday",
+        wednesday: "Wednesday",
+        thursday: "Thursday",
+        friday: "Friday",
+        saturday: "Saturday",
+        sunday: "Sunday"
     },
+    
     ru: {
+        // Main interface
         title: "Калькулятор возраста",
         subtitle: "Узнайте свой возраст в удивительных деталях",
         birthDateLabel: "Введите дату рождения:",
@@ -50,22 +83,55 @@ const translations = {
         printBtn: "Печать",
         resetBtn: "Рассчитать снова",
         footer: "© 2025 Расширенный калькулятор возраста. Сделано с ❤️",
-        // Add more translations for dynamic content
+        
+        // Time units
         years: "лет",
         months: "месяцев",
         days: "дней",
         hours: "часов",
         minutes: "минут",
         seconds: "секунд",
-        daysUntilBirthday: "дней до вашего следующего дня рождения",
-        zodiacSign: "Ваш знак зодиака",
-        dayOfWeek: "Вы родились в",
-        ageInDays: "Вы прожили",
-        totalDays: "дней",
-        sleepTime: "Вы, вероятно, проспали около",
-        heartbeats: "Ваше сердце совершило примерно"
+        
+        // Dynamic content
+        ageDisplay: "{years} лет, {months} месяцев, {days} дней",
+        totalDays: "Всего прожито дней: {days}",
+        totalHours: "Всего часов: {hours}",
+        totalMinutes: "Всего минут: {minutes}",
+        totalSeconds: "Всего секунд: {seconds}",
+        daysUntilBirthday: "{days} дней до вашего следующего дня рождения",
+        nextBirthdayDate: "Следующий день рождения: {date}",
+        zodiacSign: "Знак зодиака: {sign}",
+        dayOfWeek: "Родились в: {day}",
+        sleepTime: "Примерное время сна: {years} лет, {days} дней",
+        heartbeats: "Примерное количество ударов сердца: {beats}",
+        breathsTaken: "Примерное количество вдохов: {breaths}",
+        
+        // Zodiac signs
+        aries: "Овен",
+        taurus: "Телец",
+        gemini: "Близнецы",
+        cancer: "Рак",
+        leo: "Лев",
+        virgo: "Дева",
+        libra: "Весы",
+        scorpio: "Скорпион",
+        sagittarius: "Стрелец",
+        capricorn: "Козерог",
+        aquarius: "Водолей",
+        pisces: "Рыбы",
+        
+        // Days of week
+        monday: "понедельник",
+        tuesday: "вторник",
+        wednesday: "среда",
+        thursday: "четверг",
+        friday: "пятница",
+        saturday: "суббота",
+        sunday: "воскресенье"
     },
+    
     uz: {
+        // Main interface
         title: "Yosh kalkulyatori",
         subtitle: "Yoshingizni ajoyib tafsilotlarda kashf eting",
         birthDateLabel: "Tug'ilgan sanangizni kiriting:",
@@ -80,27 +146,56 @@ const translations = {
         printBtn: "Chop etish",
         resetBtn: "Qayta hisoblash",
         footer: "© 2025 Kengaytirilgan yosh kalkulyatori. ❤️ bilan yaratilgan",
-        // Add more translations for dynamic content
+        
+        // Time units
         years: "yil",
         months: "oy",
         days: "kun",
         hours: "soat",
         minutes: "daqiqa",
         seconds: "soniya",
-        daysUntilBirthday: "kun keyingi tug'ilgan kuningizgacha",
-        zodiacSign: "Sizning zodiak belgingiz",
-        dayOfWeek: "Siz tug'ilgansiz",
-        ageInDays: "Siz yashagansiz",
-        totalDays: "kun",
-        sleepTime: "Siz taxminan uxlagansiz",
-        heartbeats: "Yuragingiz taxminan urgan"
+        
+        // Dynamic content
+        ageDisplay: "{years} yil, {months} oy, {days} kun",
+        totalDays: "Jami yashagan kunlar: {days}",
+        totalHours: "Jami soatlar: {hours}",
+        totalMinutes: "Jami daqiqalar: {minutes}",
+        totalSeconds: "Jami soniyalar: {seconds}",
+        daysUntilBirthday: "Keyingi tug'ilgan kuningizgacha {days} kun",
+        nextBirthdayDate: "Keyingi tug'ilgan kun: {date}",
+        zodiacSign: "Zodiak belgisi: {sign}",
+        dayOfWeek: "Tug'ilgan kun: {day}",
+        sleepTime: "Taxminiy uyqu vaqti: {years} yil, {days} kun",
+        heartbeats: "Taxminiy yurak urishi: {beats}",
+        breathsTaken: "Taxminiy nafas olish: {breaths}",
+        
+        // Zodiac signs
+        aries: "Qo'y",
+        taurus: "Buqa",
+        gemini: "Egizaklar",
+        cancer: "Qisqichbaqa",
+        leo: "Arslon",
+        virgo: "Parizod",
+        libra: "Tarozi",
+        scorpio: "Chayon",
+        sagittarius: "O'qchi",
+        capricorn: "Tog' echkisi",
+        aquarius: "Qovg'a",
+        pisces: "Baliq",
+        
+        // Days of week
+        monday: "dushanba",
+        tuesday: "seshanba",
+        wednesday: "chorshanba",
+        thursday: "payshanba",
+        friday: "juma",
+        saturday: "shanba",
+        sunday: "yakshanba"
     }
 };
 
-// Default language
 let currentLanguage = 'en';
 
-// Function to update all text content based on selected language
 function updateLanguage(lang) {
     if (!translations[lang]) {
         console.error(`Language "${lang}" is not supported.`);
@@ -110,7 +205,6 @@ function updateLanguage(lang) {
     currentLanguage = lang;
     document.documentElement.lang = lang;
     
-    // Update all elements with data-i18n attribute
     document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
         if (translations[lang][key]) {
@@ -118,23 +212,18 @@ function updateLanguage(lang) {
         }
     });
     
-    // Update active state of language buttons
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
     });
     
-    // Store language preference
     localStorage.setItem('preferredLanguage', lang);
     
-    // Re-render calculation results if they exist
     if (window.updateCalculationDisplay && document.getElementById('resultsSection').style.display !== 'none') {
         window.updateCalculationDisplay();
     }
 }
 
-// Add event listeners to language buttons
 document.addEventListener('DOMContentLoaded', () => {
-    // Set initial language based on stored preference or browser language
     const storedLang = localStorage.getItem('preferredLanguage');
     const browserLang = navigator.language.split('-')[0];
     const initialLang = storedLang || (translations[browserLang] ? browserLang : 'en');
@@ -145,16 +234,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    // Set initial language
     updateLanguage(initialLang);
 });
 
-// Expose translation function to be used in calculator.js
-window.getTranslation = function(key) {
-    return translations[currentLanguage][key] || translations['en'][key] || key;
+window.getTranslation = function(key, params = {}) {
+    let text = translations[currentLanguage][key] || translations['en'][key] || key;
+    
+    Object.keys(params).forEach(param => {
+        text = text.replace(`{${param}}`, params[param]);
+    });
+    
+    return text;
 };
 
-// Expose current language
 window.getCurrentLanguage = function() {
     return currentLanguage;
 };

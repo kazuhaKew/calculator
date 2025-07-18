@@ -377,4 +377,214 @@ class AgeCalculator {
 // Initialize the calculator when the page loads
 document.addEventListener('DOMContentLoaded', () => {
     new AgeCalculator();
+    const birthDateInput = document.getElementById('birthDate');
+    const calculateBtn = document.getElementById('calculateBtn');
+    const resultsSection = document.getElementById('resultsSection');
+    const resetBtn = document.getElementById('resetBtn');
+    const shareBtn = document.getElementById('shareBtn');
+    const printBtn = document.getElementById('printBtn');
+    const themeToggle = document.getElementById('themeToggle');
+
+    // Set max date to today
+    birthDateInput.max = new Date().toISOString().split('T')[0];
+
+    let calculationData = null;
+
+    calculateBtn.addEventListener('click', calculateAge);
+    resetBtn.addEventListener('click', resetCalculator);
+    shareBtn.addEventListener('click', shareResults);
+    printBtn.addEventListener('click', printResults);
+    themeToggle.addEventListener('click', toggleTheme);
+
+    function calculateAge() {
+        const birthDate = new Date(birthDateInput.value);
+        if (!birthDateInput.value) {
+            alert('Please enter your birth date');
+            return;
+        }
+
+        if (birthDate > new Date()) {
+            alert('Birth date cannot be in the future');
+            return;
+        }
+
+        calculationData = performCalculations(birthDate);
+        displayResults();
+        resultsSection.style.display = 'block';
+        resultsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function performCalculations(birthDate) {
+        const now = new Date();
+        const timeDiff = now - birthDate;
+        
+        // Basic age calculation
+        let years = now.getFullYear() - birthDate.getFullYear();
+        let months = now.getMonth() - birthDate.getMonth();
+        let days = now.getDate() - birthDate.getDate();
+
+        if (days < 0) {
+            months--;
+            days += new Date(now.getFullYear(), now.getMonth(), 0).getDate();
+        }
+        if (months < 0) {
+            years--;
+            months += 12;
+        }
+
+        // Total calculations
+        const totalDays = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+        const totalHours = Math.floor(timeDiff / (1000 * 60 * 60));
+        const totalMinutes = Math.floor(timeDiff / (1000 * 60));
+        const totalSeconds = Math.floor(timeDiff / 1000);
+
+        // Next birthday
+        const nextBirthday = new Date(now.getFullYear(), birthDate.getMonth(), birthDate.getDate());
+        if (nextBirthday <= now) {
+            nextBirthday.setFullYear(now.getFullYear() + 1);
+        }
+        const daysUntilBirthday = Math.ceil((nextBirthday - now) / (1000 * 60 * 60 * 24));
+
+        // Zodiac sign
+        const zodiacSign = getZodiacSign(birthDate);
+
+        // Day of week born
+        const dayOfWeek = getDayOfWeek(birthDate);
+
+        // Life statistics
+        const sleepYears = Math.floor(years / 3);
+        const sleepDays = Math.floor(totalDays / 3);
+        const heartbeats = totalMinutes * 70; // Average 70 beats per minute
+        const breaths = totalMinutes * 15; // Average 15 breaths per minute
+
+        return {
+            years, months, days,
+            totalDays, totalHours, totalMinutes, totalSeconds,
+            daysUntilBirthday, nextBirthday,
+            zodiacSign, dayOfWeek,
+            sleepYears, sleepDays, heartbeats, breaths
+        };
+    }
+
+    function displayResults() {
+        updateCalculationDisplay();
+    }
+
+    function updateCalculationDisplay() {
+        if (!calculationData) return;
+
+        const { years, months, days, totalDays, totalHours, totalMinutes, totalSeconds,
+                daysUntilBirthday, nextBirthday, zodiacSign, dayOfWeek,
+                sleepYears, sleepDays, heartbeats, breaths } = calculationData;
+
+        // Main age display
+        document.getElementById('ageDisplay').innerHTML = 
+            getTranslation('ageDisplay', { years, months, days });
+
+        // Detailed breakdown
+        document.getElementById('breakdown').innerHTML = `
+            <p>${getTranslation('totalDays', { days: totalDays.toLocaleString() })}</p>
+            <p>${getTranslation('totalHours', { hours: totalHours.toLocaleString() })}</p>
+            <p>${getTranslation('totalMinutes', { minutes: totalMinutes.toLocaleString() })}</p>
+            <p>${getTranslation('totalSeconds', { seconds: totalSeconds.toLocaleString() })}</p>
+        `;
+
+        // Next birthday countdown
+        document.getElementById('countdown').innerHTML = `
+            <p>${getTranslation('daysUntilBirthday', { days: daysUntilBirthday })}</p>
+            <p>${getTranslation('nextBirthdayDate', { date: nextBirthday.toLocaleDateString() })}</p>
+        `;
+
+        // Personal info
+        document.getElementById('personalInfo').innerHTML = `
+            <p>${getTranslation('zodiacSign', { sign: getTranslation(zodiacSign) })}</p>
+            <p>${getTranslation('dayOfWeek', { day: getTranslation(dayOfWeek) })}</p>
+        `;
+
+        // Fun facts
+        document.getElementById('funFacts').innerHTML = `
+            <p>${getTranslation('sleepTime', { years: sleepYears, days: sleepDays })}</p>
+            <p>${getTranslation('heartbeats', { beats: heartbeats.toLocaleString() })}</p>
+            <p>${getTranslation('breathsTaken', { breaths: breaths.toLocaleString() })}</p>
+        `;
+
+        // Life statistics
+        document.getElementById('lifeStats').innerHTML = `
+            <div class="stat-item">
+                <span class="stat-number">${years}</span>
+                <span class="stat-label">${getTranslation('years')}</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">${totalDays.toLocaleString()}</span>
+                <span class="stat-label">${getTranslation('days')}</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">${Math.floor(heartbeats / 1000000)}M</span>
+                <span class="stat-label">Heartbeats</span>
+            </div>
+        `;
+    }
+
+    function getZodiacSign(date) {
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+
+        if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) return 'aries';
+        if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) return 'taurus';
+        if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) return 'gemini';
+        if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) return 'cancer';
+        if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) return 'leo';
+        if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) return 'virgo';
+        if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) return 'libra';
+        if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) return 'scorpio';
+        if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) return 'sagittarius';
+        if ((month == 12 && day >= 22) || (month == 1 && day <= 19)) return 'capricorn';
+        if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) return 'aquarius';
+        return 'pisces';
+    }
+
+    function getDayOfWeek(date) {
+        const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+        return days[date.getDay()];
+    }
+
+    function resetCalculator() {
+        birthDateInput.value = '';
+        resultsSection.style.display = 'none';
+        calculationData = null;
+    }
+
+    function shareResults() {
+        if (!calculationData) return;
+        
+        const { years, months, days } = calculationData;
+        const text = `I'm ${years} years, ${months} months, and ${days} days old! Calculate your age at: ${window.location.href}`;
+        
+        if (navigator.share) {
+            navigator.share({ text });
+        } else {
+            navigator.clipboard.writeText(text);
+            alert('Results copied to clipboard!');
+        }
+    }
+
+    function printResults() {
+        window.print();
+    }
+
+    function toggleTheme() {
+        document.body.classList.toggle('dark-theme');
+        const isDark = document.body.classList.contains('dark-theme');
+        themeToggle.textContent = isDark ? '☀️' : '🌙';
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
+
+    // Load saved theme
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-theme');
+        themeToggle.textContent = '☀️';
+    }
+
+    window.updateCalculationDisplay = updateCalculationDisplay;
 });
