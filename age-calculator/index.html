@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Advanced age calculator with detailed insights and fun facts">
+    <title>Enhanced Age Calculator</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Age Calculator</h1>
+            <p class="subtitle">Discover your age in amazing detail</p>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+        </header>
+
+        <main class="main">
+            <section class="input-section">
+                <div class="input-group">
+                    <label for="birthDate" class="input-label">Enter your birth date:</label>
+                    <input type="date" id="birthDate" class="date-input" max="" required>
+                </div>
+                <button class="calculate-btn" id="calculateBtn">Calculate Age</button>
+            </section>
+
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <div class="results-grid">
+                    <div class="result-card primary">
+                        <h2>Your Age</h2>
+                        <div class="age-display" id="ageDisplay"></div>
+                    </div>
+
+                    <div class="result-card">
+                        <h3>Detailed Breakdown</h3>
+                        <div class="breakdown" id="breakdown"></div>
+                    </div>
+
+                    <div class="result-card">
+                        <h3>Next Birthday</h3>
+                        <div class="countdown" id="countdown"></div>
+                    </div>
+
+                    <div class="result-card">
+                        <h3>Personal Info</h3>
+                        <div class="personal-info" id="personalInfo"></div>
+                    </div>
+
+                    <div class="result-card">
+                        <h3>Fun Facts</h3>
+                        <div class="fun-facts" id="funFacts"></div>
+                    </div>
+
+                    <div class="result-card">
+                        <h3>Life Statistics</h3>
+                        <div class="life-stats" id="lifeStats"></div>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button class="action-btn" id="shareBtn">Share Results</button>
+                    <button class="action-btn" id="printBtn">Print</button>
+                    <button class="action-btn" id="resetBtn">Calculate Again</button>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 Enhanced Age Calculator. Made with ❤️</p>
+        </footer>
+    </div>
+
+    <script src="scripts/calculator.js"></script>
+</body>
+</html>
