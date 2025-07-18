@@ -352,6 +352,26 @@ class AgeCalculator {
         localStorage.removeItem('birthDate');
         this.birthDateInput.focus();
     }
+
+    // Make sure to update your existing functions to use translations
+    // For example, if you have a function that displays age in years, months and days:
+
+    updateCalculationDisplay() {
+        // Example of using translations in dynamic content
+        const years = 25; // Example value
+        const months = 6; // Example value
+        const days = 15; // Example value
+        
+        const yearsText = this.getTranslation('years');
+        const monthsText = this.getTranslation('months');
+        const daysText = this.getTranslation('days');
+        
+        document.getElementById('ageDisplay').innerHTML = 
+            `${years} ${yearsText}, ${months} ${monthsText}, ${days} ${daysText}`;
+        
+        // Update other elements with translations as needed
+        // ...
+    }
 }
 
 // Initialize the calculator when the page loads

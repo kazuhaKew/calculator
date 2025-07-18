@@ -13,66 +13,74 @@
 <body>
     <div class="container">
         <header class="header">
-            <h1 class="title">Age Calculator</h1>
-            <p class="subtitle">Discover your age in amazing detail</p>
-            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+            <h1 class="title" data-i18n="title">Age Calculator</h1>
+            <p class="subtitle" data-i18n="subtitle">Discover your age in amazing detail</p>
+            <div class="header-controls">
+                <div class="language-selector">
+                    <button class="lang-btn" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="ru">RU</button>
+                    <button class="lang-btn" data-lang="uz">UZ</button>
+                </div>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+            </div>
         </header>
 
         <main class="main">
             <section class="input-section">
                 <div class="input-group">
-                    <label for="birthDate" class="input-label">Enter your birth date:</label>
+                    <label for="birthDate" class="input-label" data-i18n="birthDateLabel">Enter your birth date:</label>
                     <input type="date" id="birthDate" class="date-input" max="" required>
                 </div>
-                <button class="calculate-btn" id="calculateBtn">Calculate Age</button>
+                <button class="calculate-btn" id="calculateBtn" data-i18n="calculateBtn">Calculate Age</button>
             </section>
 
             <section class="results-section" id="resultsSection" style="display: none;">
                 <div class="results-grid">
                     <div class="result-card primary">
-                        <h2>Your Age</h2>
+                        <h2 data-i18n="yourAge">Your Age</h2>
                         <div class="age-display" id="ageDisplay"></div>
                     </div>
 
                     <div class="result-card">
-                        <h3>Detailed Breakdown</h3>
+                        <h3 data-i18n="detailedBreakdown">Detailed Breakdown</h3>
                         <div class="breakdown" id="breakdown"></div>
                     </div>
 
                     <div class="result-card">
-                        <h3>Next Birthday</h3>
+                        <h3 data-i18n="nextBirthday">Next Birthday</h3>
                         <div class="countdown" id="countdown"></div>
                     </div>
 
                     <div class="result-card">
-                        <h3>Personal Info</h3>
+                        <h3 data-i18n="personalInfo">Personal Info</h3>
                         <div class="personal-info" id="personalInfo"></div>
                     </div>
 
                     <div class="result-card">
-                        <h3>Fun Facts</h3>
+                        <h3 data-i18n="funFacts">Fun Facts</h3>
                         <div class="fun-facts" id="funFacts"></div>
                     </div>
 
                     <div class="result-card">
-                        <h3>Life Statistics</h3>
+                        <h3 data-i18n="lifeStatistics">Life Statistics</h3>
                         <div class="life-stats" id="lifeStats"></div>
                     </div>
                 </div>
 
                 <div class="actions">
-                    <button class="action-btn" id="shareBtn">Share Results</button>
-                    <button class="action-btn" id="printBtn">Print</button>
-                    <button class="action-btn" id="resetBtn">Calculate Again</button>
+                    <button class="action-btn" id="shareBtn" data-i18n="shareBtn">Share Results</button>
+                    <button class="action-btn" id="printBtn" data-i18n="printBtn">Print</button>
+                    <button class="action-btn" id="resetBtn" data-i18n="resetBtn">Calculate Again</button>
                 </div>
             </section>
         </main>
 
         <footer class="footer">
-            <p>&copy; 2025 Enhanced Age Calculator. Made with ❤️</p>
+            <p data-i18n="footer">&copy; 2025 Enhanced Age Calculator. Made with ❤️</p>
         </footer>
     </div>
 
+    <script src="scripts/i18n.js"></script>
     <script src="scripts/calculator.js"></script>
 </body>
 </html>
